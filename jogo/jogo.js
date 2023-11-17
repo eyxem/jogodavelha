@@ -11,4 +11,22 @@ let turno;
 const JOGADOR_X = "X";
 const JOGADOR_O = "O";
 
-//Inicializa a variável jogoAcabou como falso, indicando que
+//Inicializa a variável jogoAcabou como falso, indicando que o jogo está em andamento.
+let jogoAcabou = false;
+
+// Adiciona um evento de clique ao documento que é adicionado quando qualquer elemento é clicado.
+document.addEventListener("click", (event) => {
+    // Verifica se o elemento clicado possui a classe "celula" e se o jogo ainda não acabou.
+    if (event.target.matches (".celula") && !jogoAcabou) {
+        // Chama a função jogar, passando o ID do elemento clicado como argumento.
+        jogar (event.target.id);
+    }
+});
+
+// Função que representa a jogada de um jogador.
+function jogar (id) {
+    // Obtém o elemento com o ID correspondente ao argumento passado.
+    const celula = document.getElementById (id);
+
+    
+}
