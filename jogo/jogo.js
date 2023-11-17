@@ -28,5 +28,24 @@ function jogar (id) {
     // Obtém o elemento com o ID correspondente ao argumento passado.
     const celula = document.getElementById (id);
 
-    
+    // Verifica se o conteúdo da célula está vazio, ou seja, se ainda não foi jogado.
+    if (celula.textContent === "") {
+        // Determina qual jogador está fazendo a jogada com base na variável checarTurno.
+        turno = checarTurno ? JOGADOR_X : JOGADOR_O;
+
+        // Inverte o valor da variável checarTurno para alterar entre os jogadores.
+        checarTurno = !checarTurno;
+
+        // Define o conteúdo da célula como símbolo do jogador atual.
+        celula.textContext = turno;
+
+        // Adiciona a classe correspondente ao jogador atual á célula para estilização.
+        celula.classList.add(turno);
+
+        // Remove o evento do clique da célula para evitar jogadas repetidas.
+        celula.removeEventListener("click", jogar);
+
+        // Chama a função verificarVencedor para verificar se o jogador atual venceu.
+        verificarVencedor(turno);
+    }
 }
